@@ -37,7 +37,7 @@ export class StorageService {
     }
 
     this.minio = new MinioClient({
-      endPoint: endpoint,
+      endPoint: endpoint!,
       port,
       useSSL,
       accessKey,
