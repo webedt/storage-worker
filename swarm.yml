@@ -3,9 +3,6 @@ version: '3.8'
 services:
   minio:
     image: minio/minio:latest
-    ports:
-      - "9000:9000"
-      - "9001:9001"
     environment:
       MINIO_ROOT_USER: ${MINIO_ROOT_USER}
       MINIO_ROOT_PASSWORD: ${MINIO_ROOT_PASSWORD}
@@ -20,8 +17,6 @@ services:
 
   storage-worker:
     image: storage-worker:latest
-    ports:
-      - "3000:3000"
     environment:
       PORT: 3000
       MINIO_ENDPOINT: minio
