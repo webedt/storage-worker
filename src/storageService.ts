@@ -24,8 +24,9 @@ export class StorageService {
     const endpoint = process.env.MINIO_ENDPOINT;
     const port = parseInt(process.env.MINIO_PORT || '9000', 10);
     const useSSL = process.env.MINIO_USE_SSL === 'true';
-    const accessKey = process.env.MINIO_ROOT_USER || 'minioadmin';
-    const secretKey = process.env.MINIO_ROOT_PASSWORD || 'minioadmin';
+    // Support both MINIO_ROOT_USER (Docker) and MINIO_ACCESS_KEY (legacy)
+    const accessKey = process.env.MINIO_ROOT_USER || process.env.MINIO_ACCESS_KEY || 'minioadmin';
+    const secretKey = process.env.MINIO_ROOT_PASSWORD || process.env.MINIO_SECRET_KEY || 'minioadmin';
     this.bucket = process.env.MINIO_BUCKET || 'sessions';
 
     this.enabled = !!endpoint;

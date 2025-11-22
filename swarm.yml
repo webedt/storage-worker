@@ -16,7 +16,7 @@ services:
           - node.role == manager
 
   storage-worker:
-    image: storage-worker:latest
+    image: dockerregistry.etdofresh.com/storage-worker:latest
     environment:
       PORT: 3000
       MINIO_ENDPOINT: minio

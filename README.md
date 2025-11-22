@@ -63,11 +63,26 @@ const exists = await client.sessionExists(sessionId);
 
 ## Docker Deployment
 
+### Using Docker Registry
+
+The image is automatically built and pushed to `dockerregistry.etdofresh.com/storage-worker:latest` via GitHub Actions.
+
 ```bash
-docker build -t storage-worker .
+docker pull dockerregistry.etdofresh.com/storage-worker:latest
 docker run -p 3000:3000 \
   -e MINIO_ENDPOINT=minio \
   -e MINIO_ROOT_USER=minioadmin \
   -e MINIO_ROOT_PASSWORD=minioadmin \
-  storage-worker
+  dockerregistry.etdofresh.com/storage-worker:latest
 ```
+
+### Docker Swarm
+
+```bash
+./deploy-swarm.sh
+```
+
+This will:
+1. Pull the latest image from the registry
+2. Create the workers-network overlay network
+3. Deploy storage-worker and MinIO services

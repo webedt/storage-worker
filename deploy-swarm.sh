@@ -1,8 +1,8 @@
 #!/bin/bash
 
-# Build the image
-echo "Building storage-worker image..."
-docker build -t storage-worker:latest .
+# Pull the latest image from registry
+echo "Pulling storage-worker image from registry..."
+docker pull dockerregistry.etdofresh.com/storage-worker:latest
 
 # Create network if it doesn't exist
 docker network inspect workers-network >/dev/null 2>&1 || docker network create --driver overlay workers-network
