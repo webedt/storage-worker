@@ -17,8 +17,8 @@ PORT=3000
 MINIO_ENDPOINT=minio
 MINIO_PORT=9000
 MINIO_USE_SSL=false
-MINIO_ACCESS_KEY=minioadmin
-MINIO_SECRET_KEY=minioadmin
+MINIO_ROOT_USER=minioadmin
+MINIO_ROOT_PASSWORD=minioadmin
 MINIO_BUCKET=sessions
 ```
 
@@ -67,7 +67,7 @@ const exists = await client.sessionExists(sessionId);
 docker build -t storage-worker .
 docker run -p 3000:3000 \
   -e MINIO_ENDPOINT=minio \
-  -e MINIO_ACCESS_KEY=minioadmin \
-  -e MINIO_SECRET_KEY=minioadmin \
+  -e MINIO_ROOT_USER=minioadmin \
+  -e MINIO_ROOT_PASSWORD=minioadmin \
   storage-worker
 ```
