@@ -1,5 +1,7 @@
 # Storage Worker
 
+> **⚠️ This repository has moved to https://github.com/webedt/monorepo**
+
 MinIO-based storage service for session management across multiple workers.
 
 ## Features
